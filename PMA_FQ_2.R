@@ -1,3 +1,4 @@
+# Set up ----
 rm(list = ls())
 
 set.seed(53211)
@@ -12,7 +13,7 @@ library(sjlabelled)
 library(sjPlot)
 library(survey)
 
-######
+# Creating the Datasets ----
 # set working directory
 setwd("~/Documents/JHSPH/5. Practicum/0. CCP/Zoe Hendrickson/Audience Segmentation")
 
@@ -116,7 +117,9 @@ FQ.short.nonuser <- FQ.short %>%
 
 names(FQ.short)
 names(FQ.short.nonuser)
-#####
+
+# Making FQ.names with Stata labels ----
+
 # creating a dataset with each categorical variable's value LABELS
 # creating a dataset with each categorical variable's value LABELS
 # creating a dataset with each categorical variable's value LABELS
@@ -153,7 +156,9 @@ colnames(FQ.names) <- colnames(FQ.names.temp) #replace the column names of dat a
 FQ.names.df <- as.data.frame(FQ.names) #make it a dataframe
 str(FQ.names.df)
 summary(FQ.names.df)
-#####
+
+# Regrouping and recoding ----
+
 # Regrouping variables
 # Regrouping variables
 # Regrouping variables
@@ -568,7 +573,8 @@ View(FQ.names.df.2); View(FQ.short.nonuser.2)
 FQ.names.df.2$Age <- FQ.short.nonuser$FQ_age
 FQ.names.df.2$province <- FQ.short.nonuser$province
 FQ.names.df.2$FQweight <- FQ.short.nonuser$FQweight
-#####
+# Table Ones and summaries ----
+
 # Create TableOne stratified by Intention
 # Create TableOne stratified by Intention
 # Create TableOne stratified by Intention
@@ -658,7 +664,7 @@ summary(FQ.names.table1.2) #categorical from FQ.names.df
 print(CHW.visit.2, quote = TRUE, noSpaces = TRUE, showAllLevels = TRUE) #categorical from FQ.names.df
 summary(CHW.visit.2) #categorical from FQ.names.df
 print(CHW.table1.cont.2, quote = TRUE, noSpaces = TRUE, showAllLevels = TRUE) #FQ_age health worker
-#####
+# Complex survey analysis ----
 # Complex survey analysis
 # Complex survey analysis
 # Complex survey analysis
@@ -735,7 +741,7 @@ svychisq(~future_user_not_current + visited_by_health_worker, des, statistic = "
 
 
 
-#####
+# Other stuff ----
 #need to recode 
 #need to recode 
 #need to recode 
